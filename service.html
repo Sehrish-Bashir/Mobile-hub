@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - ProFix Mobile Repair</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        /* Header */
+        .top-bar {
+            background-color: var(--secondary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: white !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary) !important;
+        }
+        
+        .navbar-brand span {
+            color: var(--accent);
+        }
+        
+        .nav-link {
+            color: var(--dark) !important;
+            font-weight: 500;
+            margin: 0 8px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+        
+        .active {
+            color: var(--primary) !important;
+            font-weight: 600;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 3rem;
+        }
+        
+        .breadcrumb {
+            justify-content: center;
+            background: transparent;
+        }
+        
+        .breadcrumb-item a {
+            color: white;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 80px 0;
+        }
+        
+        .service-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            margin-bottom: 30px;
+            overflow: hidden;
+            position: relative;
+            background: white;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:hover .service-img {
+            transform: scale(1.1);
+        }
+        
+        .service-img-container {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            color: var(--accent);
+            transform: rotate(15deg) scale(1.1);
+        }
+        
+        .service-content {
+            padding: 25px;
+            position: relative;
+            z-index: 1;
+            background: white;
+        }
+        
+        .service-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        
+        .service-features li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .service-features li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        .btn-service {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-service:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Brands Section */
+        .brands-section {
+            background-color: var(--light);
+            padding: 60px 0;
+        }
+        
+        .brand-logo {
+            height: 60px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .brand-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(52, 152, 219, 0.25);
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .btn-cta {
+            background-color: white;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 30px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cta:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+        
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 60px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <i class="fas fa-phone-alt"></i> +92 300 1234567 | 
+                    <i class="fas fa-envelope"></i> info@profixrepair.com
+                </div>
+                <div class="col-md-6 text-end">
+                    <i class="fas fa-map-marker-alt"></i> Main Market, Lahore, Pakistan
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Pro<span>Fix</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="service.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reveiw.html">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact us.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Our Services</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb animate__animated animate__fadeInUp">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Services</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-title text-center mb-5 animate-on-scroll">
+                <h2>Mobile Repair Services</h2>
+                <p class="lead">Professional repairs for all your devices with warranty</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card animate-on-scroll" data-delay="100">
+                        <div class="service-img-container">
+                            <img src="SECREEN.avif" alt="Screen Replacement" class="service-img">
+                        </div>
+                        <div class="service-content">
+                            <span class="service-badge">Popular</span>
+                            <div class="service-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Screen Replacement</h3>
+                            <p>Broken or cracked screen? We replace all types of mobile screens with high-quality parts.</p>
+                            <div class="service-price">From Rs. 5,000</div>
+                            <ul class="service-features">
+                                <li>Original or premium quality screens</li>
+                                <li>30-minute replacement</li>
+                                <li>90-day warranty</li>
+                                <li>All major brands</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-service">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card animate-on-scroll" data-delay="200">
+                        <div class="service-img-container">
+                            <img src="Battery Replacement.jpg" alt="Battery Replacement" class="service-img">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-battery-full"></i>
+                            </div>
+                            <h3>Battery Replacement</h3>
+                            <p>Is your phone dying too quickly? We replace old batteries with new OEM or premium aftermarket batteries.</p>
+                            <div class="service-price">From Rs. 3,500</div>
+                            <ul class="service-features">
+                                <li>High-capacity batteries</li>
+                                <li>Improved battery life</li>
+                                <li>60-day warranty</li>
+                                <li>All models available</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-service">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card animate-on-scroll" data-delay="300">
+                        <div class="service-img-container">
+                            <img src="Charging Port Repair.jpg" alt="Charging Port Repair" class="service-img">
+                        </div>
+                        <div class="service-content">
+                            <span class="service-badge">Fast Repair</span>
+                            <div class="service-icon">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <h3>Charging Port Repair</h3>
+                            <p>Phone not charging? We repair or replace faulty charging ports for all major phone models.</p>
+                            <div class="service-price">From Rs. 2,500</div>
+                            <ul class="service-features">
+                                <li>Original replacement parts</li>
+                                <li>Same-day service</li>
+                                <li>60-day warranty</li>
+                                <li>Fast charging restored</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-service">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card animate-on-scroll" data-delay="100">
+                        <div class="service-img-container">
+                            <img src="Camera Repair.jpg" alt="Camera Repair" class="service-img">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <h3>Camera Repair</h3>
+                            <p>Blurry photos or camera not working? We repair front and rear cameras on all smartphones.</p>
+                            <div class="service-price">From Rs. 4,000</div>
+                            <ul class="service-features">
+                                <li>Front & rear camera repair</li>
+                                <li>Lens replacement</li>
+                                <li>90-day warranty</li>
+                                <li>Focus issues fixed</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-service">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card animate-on-scroll" data-delay="200">
+                        <div class="service-img-container">
+                            <img src="Water Damage Repair.jpg" alt="Water Damage Repair" class="service-img">
+                        </div>
+                        <div class="service-content">
+                            <span class="service-badge">Emergency</span>
+                            <div class="service-icon">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <h3>Water Damage Repair</h3>
+                            <p>Phone got wet? Bring it in immediately for our professional water damage treatment service.</p>
+                            <div class="service-price">From Rs. 6,000</div>
+                            <ul class="service-features">
+                                <li>Immediate treatment</li>
+                                <li>Corrosion prevention</li>
+                                <li>Data recovery options</li>
+                                <li>Component-level repair</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-service">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card animate-on-scroll" data-delay="300">
+                        <div class="service-img-container">
+                            <img src="Software Issues.avif" alt="Software Issues" class="service-img">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-unlock"></i>
+                            </div>
+                            <h3>Software Solutions</h3>
+                            <p>Phone frozen or not working properly? We fix software issues, viruses, and perform factory resets.</p>
+                            <div class="service-price">From Rs. 2,000</div>
+                            <ul class="service-features">
+                                <li>Virus removal</li>
+                                <li>Software updates</li>
+                                <li>Factory reset</li>
+                                <li>Boot loop fixes</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-service">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Brands Section -->
+    <section class="brands-section">
+        <div class="container">
+            <div class="section-title text-center mb-5 animate-on-scroll">
+                <h2>Brands We Repair</h2>
+                <p class="lead">We service all major smartphone brands</p>
+            </div>
+            
+            <div class="row align-items-center">
+                <div class="col-6 col-md-2 mb-4 text-center animate-on-scroll" data-delay="100">
+                    <img src="Apple_logo_black.svg" alt="Apple" class="brand-logo" style="height: 40px;">
+                </div>
+                <div class="col-6 col-md-2 mb-4 text-center animate-on-scroll" data-delay="150">
+                    <img src="Samsung_Logo.svg" alt="Samsung" class="brand-logo">
+                </div>
+                <div class="col-6 col-md-2 mb-4 text-center animate-on-scroll" data-delay="200">
+                    <img src="haway.png" alt="Huawei" class="brand-logo">
+                </div>
+                <div class="col-6 col-md-2 mb-4 text-center animate-on-scroll" data-delay="250">
+                    <img src="oppo.jpg" alt="Oppo" class="brand-logo">
+                </div>
+                <div class="col-6 col-md-2 mb-4 text-center animate-on-scroll" data-delay="300">
+                    <img src="vivo.png" alt="Vivo" class="brand-logo">
+                </div>
+                <div class="col-6 col-md-2 mb-4 text-center animate-on-scroll" data-delay="350">
+                    <img src="xiaom.png" alt="Xiaomi" class="brand-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title text-center mb-5 animate-on-scroll">
+                <h2>Frequently Asked Questions</h2>
+                <p class="lead">Get answers to common questions about our services</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item mb-3 border-0 shadow-sm animate-on-scroll" data-delay="100">
+                            <h3 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    How long does a typical repair take?
+                                </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Most common repairs like screen or battery replacements take about 30-60 minutes. More complex repairs may take 2-4 hours. We'll provide an estimated time when you bring in your device.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0 shadow-sm animate-on-scroll" data-delay="150">
+                            <h3 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    Do you offer warranty on repairs?
+                                </button>
+                            </h3>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes! We offer a 90-day warranty on most repairs (60 days for batteries). The warranty covers defects in parts and workmanship. It does not cover accidental damage or liquid exposure after the repair.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0 shadow-sm animate-on-scroll" data-delay="200">
+                            <h3 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    Do I need an appointment for repair?
+                                </button>
+                            </h3>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Walk-ins are welcome, but we recommend booking an appointment to minimize your wait time. For water damage repairs, we recommend coming as soon as possible without waiting for an appointment.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0 shadow-sm animate-on-scroll" data-delay="250">
+                            <h3 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    Will my data be safe during repair?
+                                </button>
+                            </h3>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    In most cases, yes. However, we always recommend backing up your data before any repair. For certain repairs like motherboard issues or water damage, data loss is possible. We offer data backup services for an additional fee.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0 shadow-sm animate-on-scroll" data-delay="300">
+                            <h3 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                                    What payment methods do you accept?
+                                </button>
+                            </h3>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We accept cash, credit/debit cards, JazzCash, EasyPaisa, and bank transfers. Payment is due when you pick up your device after the repair is completed.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center animate-on-scroll">
+                    <h2>Ready to Repair Your Device?</h2>
+                    <p class="mb-4">Book your repair appointment today and get your device working like new again!</p>
+                    <a href="contact.html" class="btn btn-cta animate__animated animate__pulse animate__infinite">Book Repair Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>ProFix Mobile Repair</h5>
+                    <p>Professional mobile phone repair services for all major brands. Fast, reliable and affordable solutions for your devices.</p>
+                </div>
+                
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="about.html">About Us</a>
+                        <a href="testimonials.html">Reviews</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5>Our Services</h5>
+                    <div class="footer-links">
+                        <a href="#">Screen Replacement</a>
+                        <a href="#">Battery Replacement</a>
+                        <a href="#">Charging Port Repair</a>
+                        <a href="#">Water Damage Repair</a>
+                        <a href="#">Software Issues</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Main Market, Lahore</p>
+                    <p><i class="fas fa-phone-alt me-2"></i> +92 300 1234567</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@profixrepair.com</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="mt-4" style="border-color: rgba(255,255,255,0.1);">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 ProFix Mobile Repair. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> for mobile users</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const animateOnScroll = function() {
+                animateElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    const delay = element.getAttribute('data-delay') || 0;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        setTimeout(() => {
+                            element.classList.add('animated');
+                        }, delay * 3);
+                    }
+                });
+            };
+            
+            // Initial check
+            animateOnScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Service card hover effect enhancement
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                });
+            });
+            
+            // Brand logo hover effect
+            const brandLogos = document.querySelectorAll('.brand-logo');
+            brandLogos.forEach(logo => {
+                logo.addEventListener('mouseenter', function() {
+                    this.style.filter = 'grayscale(0%)';
+                    this.style.opacity = '1';
+                    this.style.transform = 'scale(1.1)';
+                });
+                
+                logo.addEventListener('mouseleave', function() {
+                    this.style.filter = 'grayscale(100%)';
+                    this.style.opacity = '0.7';
+                    this.style.transform = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

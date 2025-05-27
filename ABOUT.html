@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ProFix Mobile Repair</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <style>
+      :root {
+        --primary: #3498db;
+        --secondary: #2c3e50;
+        --accent: #e74c3c;
+        --light: #ecf0f1;
+        --dark: #2c3e50;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+
+      /* Header */
+      .top-bar {
+        background-color: var(--secondary);
+        color: white;
+        padding: 8px 0;
+        font-size: 14px;
+      }
+
+      .top-bar a {
+        color: white;
+        text-decoration: none;
+      }
+
+      /* Navigation */
+      .navbar {
+        background-color: white !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        color: var(--primary) !important;
+      }
+
+      .navbar-brand span {
+        color: var(--accent);
+      }
+
+      .nav-link {
+        color: var(--dark) !important;
+        font-weight: 500;
+        margin: 0 8px;
+      }
+
+      .nav-link:hover {
+        color: var(--primary) !important;
+      }
+
+      .active {
+        color: var(--primary) !important;
+        font-weight: 600;
+      }
+
+      /* Page Header */
+      .page-header {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      .page-header h1 {
+        font-weight: 700;
+        margin-bottom: 20px;
+        font-size: 3rem;
+      }
+
+      .breadcrumb {
+        justify-content: center;
+        background: transparent;
+      }
+
+      .breadcrumb-item a {
+        color: white;
+      }
+
+      /* About Section */
+      .about-section {
+        padding: 80px 0;
+      }
+
+      .about-img {
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.5s ease;
+      }
+
+      .about-img:hover {
+        transform: scale(1.03);
+      }
+
+      .section-title h2 {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 30px;
+      }
+
+      .section-title h2:after {
+        content: '';
+        position: absolute;
+        width: 50%;
+        height: 3px;
+        background: var(--primary);
+        bottom: -10px;
+        left: 25%;
+      }
+
+      .highlight-box {
+        background-color: var(--light);
+        border-left: 4px solid var(--primary);
+        padding: 20px;
+        margin: 30px 0;
+        border-radius: 0 5px 5px 0;
+        transition: all 0.3s ease;
+      }
+
+      .highlight-box:hover {
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transform: translateX(5px);
+      }
+
+      /* Team Section */
+      .team-section {
+        background-color: var(--light);
+        padding: 80px 0;
+      }
+
+      .team-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        text-align: center;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+
+      .team-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .team-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 20px;
+        border: 5px solid var(--light);
+        transition: all 0.3s ease;
+      }
+
+      .team-card:hover .team-img {
+        border-color: var(--primary);
+      }
+
+      .social-links {
+        margin-top: 15px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        background: var(--light);
+        color: var(--dark);
+        border-radius: 50%;
+        line-height: 36px;
+        margin: 0 5px;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background: var(--primary);
+        color: white;
+        transform: scale(1.1);
+      }
+
+      /* Stats Section */
+      .stats-section {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 60px 0;
+      }
+
+      .stat-box {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .stat-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Values Section */
+      .values-section {
+        padding: 80px 0;
+      }
+
+      .value-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        text-align: center;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+
+      .value-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        background: var(--primary);
+        color: white;
+      }
+
+      .value-card:hover .value-icon {
+        color: white;
+      }
+
+      .value-icon {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+      }
+
+      /* Call to Action */
+      .cta-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .btn-cta {
+        background-color: var(--accent);
+        border-color: var(--accent);
+        color: white;
+        font-weight: 600;
+        padding: 12px 30px;
+        border-radius: 30px;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-cta:hover {
+        background-color: white;
+        color: var(--accent);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 50px 0 20px;
+      }
+
+      .footer-links a {
+        color: var(--light);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+      }
+
+      .social-icons a {
+        color: white;
+        font-size: 1.5rem;
+        margin-right: 15px;
+      }
+
+      .social-icons a:hover {
+        color: var(--primary);
+      }
+
+      /* Animation Classes */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .animate-on-scroll.animated {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .page-header {
+          padding: 60px 0;
+        }
+
+        .page-header h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <i class="fas fa-phone-alt"></i> +92 300 1234567 | <i class="fas fa-envelope"></i> info@profixrepair.com
+          </div>
+          <div class="col-md-6 text-end">
+            <i class="fas fa-map-marker-alt"></i> Main Market, Lahore, Pakistan
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Pro <span>Fix</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="service.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reveiw.html">Reviews</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact us.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="animate__animated animate__fadeInDown">About ProFix</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb animate__animated animate__fadeInUp">
+            <li class="breadcrumb-item">
+              <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">About Us</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0 animate-on-scroll">
+            <img src="Our Story.webp" alt="Our Repair Center" class="img-fluid about-img">
+          </div>
+          <div class="col-lg-6 animate-on-scroll" data-delay="100">
+            <div class="section-title">
+              <h2>Our Story</h2>
+            </div>
+            <p>Founded in 2015, ProFix Mobile Repair began as a small kiosk in Lahore with a simple mission: to provide fast, reliable, and affordable mobile repair services with exceptional customer service.</p>
+            <p>What started as a one-person operation has now grown into one of Lahore's most trusted mobile repair centers, with a team of certified technicians and thousands of satisfied customers.</p>
+            <div class="highlight-box">
+              <h4>Our Mission</h4>
+              <p>To provide high-quality mobile repair services with transparency, integrity, and exceptional customer service at prices everyone can afford.</p>
+            </div>
+            <div class="highlight-box">
+              <h4>Our Vision</h4>
+              <p>To become Pakistan's most trusted mobile repair service provider through technical excellence and customer satisfaction.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Team Section -->
+    <section class="team-section">
+      <div class="container">
+        <div class="section-title text-center mb-5 animate-on-scroll">
+          <h2>Meet Our Team</h2>
+          <p class="lead">Certified technicians with years of experience</p>
+        </div>
+        <div class="row">
+          <div class="col-md-4 animate-on-scroll" data-delay="100">
+            <div class="team-card">
+              <img src="pro.webp" alt="Team Member" class="team-img">
+              <h4>Ahmed Khan</h4>
+              <h6>Founder & Lead Technician</h6>
+              <p>With over 10 years of experience in mobile repairs, Ahmed founded ProFix to bring quality repairs to everyone.</p>
+              <div class="social-links">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 animate-on-scroll" data-delay="200">
+            <div class="team-card">
+              <img src="c2.jpg" alt="Team Member" class="team-img">
+              <h4>Muhammad Ali</h4>
+              <h6>Repair Specialist</h6>
+              <p>Specializing in iPhone and iPad repairs, Fatima has completed over 2,000 successful repairs.</p>
+              <div class="social-links">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 animate-on-scroll" data-delay="300">
+            <div class="team-card">
+              <img src="c3.png" alt="Team Member" class="team-img">
+              <h4>Amma Hajan</h4>
+              <h6>Android Specialist</h6>
+              <p>Our go-to expert for all Android devices, with certifications from Samsung and Huawei.</p>
+              <div class="social-links">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-6 animate-on-scroll">
+            <div class="stat-box">
+              <div class="stat-icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <div class="stat-number">5,000+</div>
+              <p>Devices Repaired</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 animate-on-scroll" data-delay="100">
+            <div class="stat-box">
+              <div class="stat-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-number">3,500+</div>
+              <p>Satisfied Customers</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 animate-on-scroll" data-delay="200">
+            <div class="stat-box">
+              <div class="stat-icon">
+                <i class="fas fa-certificate"></i>
+              </div>
+              <div class="stat-number">12</div>
+              <p>Technician Certifications</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 animate-on-scroll" data-delay="300">
+            <div class="stat-box">
+              <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-number">30</div>
+              <p>Minute Average Repair Time</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Values Section -->
+    <section class="values-section">
+      <div class="container">
+        <div class="section-title text-center mb-5 animate-on-scroll">
+          <h2>Our Core Values</h2>
+          <p class="lead">What makes us different from the competition</p>
+        </div>
+        <div class="row">
+          <div class="col-md-4 animate-on-scroll" data-delay="100">
+            <div class="value-card">
+              <div class="value-icon">
+                <i class="fas fa-hand-holding-heart"></i>
+              </div>
+              <h4>Customer First</h4>
+              <p>We treat every customer like family and prioritize your satisfaction above all else.</p>
+            </div>
+          </div>
+          <div class="col-md-4 animate-on-scroll" data-delay="200">
+            <div class="value-card">
+              <div class="value-icon">
+                <i class="fas fa-award"></i>
+              </div>
+              <h4>Quality Work</h4>
+              <p>We use only the highest quality parts and stand behind our work with warranties.</p>
+            </div>
+          </div>
+          <div class="col-md-4 animate-on-scroll" data-delay="300">
+            <div class="value-card">
+              <div class="value-icon">
+                <i class="fas fa-lock"></i>
+              </div>
+              <h4>Transparency</h4>
+              <p>No hidden fees or surprises. We explain the problem and solution clearly.</p>
+            </div>
+          </div>
+          <div class="col-md-4 animate-on-scroll" data-delay="100">
+            <div class="value-card">
+              <div class="value-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <h4>Fast Service</h4>
+              <p>Most repairs completed in under an hour so you're not without your device.</p>
+            </div>
+          </div>
+          <div class="col-md-4 animate-on-scroll" data-delay="200">
+            <div class="value-card">
+              <div class="value-icon">
+                <i class="fas fa-rupee-sign"></i>
+              </div>
+              <h4>Fair Pricing</h4>
+              <p>Quality repairs don't have to break the bank. We offer competitive pricing.</p>
+            </div>
+          </div>
+          <div class="col-md-4 animate-on-scroll" data-delay="300">
+            <div class="value-card">
+              <div class="value-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <h4>Continuous Learning</h4>
+              <p>Our technicians regularly train to stay updated with the latest technologies.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center animate-on-scroll">
+            <h2>Ready to Experience the ProFix Difference?</h2>
+            <p class="mb-4">Bring your device to Lahore's most trusted mobile repair center</p>
+            <a href="contact.html" class="btn btn-cta animate__animated animate__pulse animate__infinite">Contact Us Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <h5>ProFix Mobile Repair</h5>
+            <p>Professional mobile phone repair services for all major brands. Fast, reliable and affordable solutions for your devices.</p>
+          </div>
+          <div class="col-md-2 mb-4">
+            <h5>Quick Links</h5>
+            <div class="footer-links">
+              <a href="index.html">Home</a>
+              <a href="services.html">Services</a>
+              <a href="about.html">About Us</a>
+              <a href="testimonials.html">Reviews</a>
+              <a href="contact.html">Contact</a>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <h5>Our Services</h5>
+            <div class="footer-links">
+              <a href="#">Screen Replacement</a>
+              <a href="#">Battery Replacement</a>
+              <a href="#">Charging Port Repair</a>
+              <a href="#">Water Damage Repair</a>
+              <a href="#">Software Issues</a>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <h5>Contact Info</h5>
+            <p>
+              <i class="fas fa-map-marker-alt me-2"></i> Main Market, Lahore
+            </p>
+            <p>
+              <i class="fas fa-phone-alt me-2"></i> +92 300 1234567
+            </p>
+            <p>
+              <i class="fas fa-envelope me-2"></i> info@profixrepair.com
+            </p>
+            <div class="social-icons mt-3">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr class="mt-4" style="border-color: rgba(255,255,255,0.1);">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="mb-0">&copy; 2023 ProFix Mobile Repair. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-end">
+            <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> for mobile users </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+      // Animation on scroll
+      document.addEventListener('DOMContentLoaded', function() {
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        const animateOnScroll = function() {
+          animateElements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            const delay = element.getAttribute('data-delay') || 0;
+            if (elementPosition < windowHeight - 100) {
+              setTimeout(() => {
+                element.classList.add('animated');
+              }, delay * 5);
+            }
+          });
+        };
+        // Initial check
+        animateOnScroll();
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        // Team card hover effect
+        const teamCards = document.querySelectorAll('.team-card');
+        teamCards.forEach(card => {
+          card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+            this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.1)';
+          });
+          card.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '';
+          });
+        });
+        // Value card hover effect
+        const valueCards = document.querySelectorAll('.value-card');
+        valueCards.forEach(card => {
+          card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+            this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.1)';
+          });
+          card.addEventListener('mouseleave', function() {
+            if (!this.classList.contains('hovered')) {
+              this.style.transform = '';
+              this.style.boxShadow = '';
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

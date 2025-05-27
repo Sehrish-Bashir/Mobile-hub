@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews - ProFix Mobile Repair</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        /* Header */
+        .top-bar {
+            background-color: var(--secondary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: white !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary) !important;
+        }
+        
+        .navbar-brand span {
+            color: var(--accent);
+        }
+        
+        .nav-link {
+            color: var(--dark) !important;
+            font-weight: 500;
+            margin: 0 8px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+        
+        .active {
+            color: var(--primary) !important;
+            font-weight: 600;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1467&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 3rem;
+        }
+        
+        .breadcrumb {
+            justify-content: center;
+            background: transparent;
+        }
+        
+        .breadcrumb-item a {
+            color: white;
+        }
+        
+        /* Reviews Section */
+        .reviews-section {
+            padding: 80px 0;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .review-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid var(--light);
+            transition: all 0.3s ease;
+        }
+        
+        .review-card:hover .review-img {
+            border-color: var(--primary);
+        }
+        
+        .review-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .review-rating {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+        
+        .review-date {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .review-quote {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: rgba(52, 152, 219, 0.1);
+        }
+        
+        /* Rating Breakdown */
+        .rating-section {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+        
+        .rating-summary {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .overall-rating {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stars-large {
+            font-size: 1.5rem;
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+        
+        .progress {
+            height: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .progress-bar {
+            background-color: var(--primary);
+        }
+        
+        /* Video Testimonials */
+        .video-section {
+            padding: 80px 0;
+        }
+        
+        .video-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(231, 76, 60, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail:hover .play-button {
+            background-color: var(--accent);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        /* Review Form */
+        .review-form-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .review-form {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .rating-input {
+            direction: rtl;
+            unicode-bidi: bidi-override;
+        }
+        
+        .rating-input input {
+            display: none;
+        }
+        
+        .rating-input label {
+            color: #ddd;
+            font-size: 2rem;
+            padding: 0 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .rating-input input:checked ~ label,
+        .rating-input label:hover,
+        .rating-input label:hover ~ label {
+            color: #ffc107;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+        
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 60px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .review-meta {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .review-img {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <i class="fas fa-phone-alt"></i> +92 300 1234567 | 
+                    <i class="fas fa-envelope"></i> info@profixrepair.com
+                </div>
+                <div class="col-md-6 text-end">
+                    <i class="fas fa-map-marker-alt"></i> Main Market, Lahore, Pakistan
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Pro<span>Fix</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="service.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ABOUT.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="reveiw.html">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact us.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Customer Reviews</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb animate__animated animate__fadeInUp">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Reviews</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+    
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-title text-center mb-5 animate-on-scroll">
+                <h2>What Our Customers Say</h2>
+                <p class="lead">Read genuine feedback from our satisfied customers</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4 animate-on-scroll">
+                    <div class="review-card">
+                        <div class="review-quote">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="review-meta">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="review-img">
+                            <div>
+                                <h5>Ahmed Khan</h5>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-date">March 15, 2023</div>
+                            </div>
+                        </div>
+                        <p>"Had my iPhone screen replaced here. The service was quick and the new screen looks perfect. The technician was very knowledgeable and explained everything clearly. Highly recommended!"</p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary">Screen Replacement</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4 animate-on-scroll" data-delay="100">
+                    <div class="review-card">
+                        <div class="review-quote">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="review-meta">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" class="review-img">
+                            <div>
+                                <h5>Fatima Ali</h5>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-date">February 28, 2023</div>
+                            </div>
+                        </div>
+                        <p>"My Samsung wasn't charging properly. They fixed the charging port in under an hour at a reasonable price. Very professional service and friendly staff. Will definitely come back!"</p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary">Charging Port Repair</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4 animate-on-scroll" data-delay="200">
+                    <div class="review-card">
+                        <div class="review-quote">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="review-meta">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Customer" class="review-img">
+                            <div>
+                                <h5>Usman Malik</h5>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="review-date">January 10, 2023</div>
+                            </div>
+                        </div>
+                        <p>"Saved my water-damaged phone when others said it couldn't be done. These guys know their stuff! The repair took longer than expected but they kept me updated throughout the process."</p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary">Water Damage Repair</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4 animate-on-scroll" data-delay="300">
+                    <div class="review-card">
+                        <div class="review-quote">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="review-meta">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="review-img">
+                            <div>
+                                <h5>Ayesha Raza</h5>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-date">December 5, 2022</div>
+                            </div>
+                        </div>
+                        <p>"Excellent service! My Oppo's battery was draining too fast. They replaced it while I waited and now it lasts longer than when it was new. Very reasonable prices compared to other shops."</p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary">Battery Replacement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5 animate-on-scroll">
+                <a href="#" class="btn btn-primary btn-lg">Load More Reviews</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Rating Breakdown Section -->
+    <section class="rating-section">
+        <div class="container">
+            <div class="section-title text-center mb-5 animate-on-scroll">
+                <h2>Customer Ratings</h2>
+                <p class="lead">Our overall customer satisfaction</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="rating-summary animate-on-scroll">
+                        <div class="row align-items-center">
+                            <div class="col-md-4 text-center mb-4 mb-md-0">
+                                <div class="overall-rating">4.8</div>
+                                <div class="stars-large">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <p>Based on 247 reviews</p>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="rating-bar mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span>5 Stars</span>
+                                        <span>187</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <div class="rating-bar mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span>4 Stars</span>
+                                        <span>45</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 18%"></div>
+                                    </div>
+                                </div>
+                                <div class="rating-bar mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span>3 Stars</span>
+                                        <span>10</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 4%"></div>
+                                    </div>
+                                </div>
+                                <div class="rating-bar mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span>2 Stars</span>
+                                        <span>3</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 1%"></div>
+                                    </div>
+                                </div>
+                                <div class="rating-bar">
+                                    <div class="d-flex justify-content-between">
+                                        <span>1 Star</span>
+                                        <span>2</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 1%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Video Testimonials Section -->
+    <section class="video-section">
+        <div class="container">
+            <div class="section-title text-center mb-5 animate-on-scroll">
+                <h2>Video Testimonials</h2>
+                <p class="lead">See what our customers say about us</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="video-card">
+                        <div class="video-thumbnail" data-bs-toggle="modal" data-bs-target="#videoModal1">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Video Thumbnail">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <h5>Ahmed's iPhone Repair Experience</h5>
+                            <div class="text-warning mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4 animate-on-scroll" data-delay="100">
+                    <div class="video-card">
+                        <div class="video-thumbnail" data-bs-toggle="modal" data-bs-target="#videoModal2">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Video Thumbnail">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <h5>Fatima's Samsung Fixed in 30 Minutes</h5>
+                            <div class="text-warning mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4 animate-on-scroll" data-delay="200">
+                    <div class="video-card">
+                        <div class="video-thumbnail" data-bs-toggle="modal" data-bs-target="#videoModal3">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Video Thumbnail">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <h5>Usman's Water Damage Miracle</h5>
+                            <div class="text-warning mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Video Modals -->
+        <div class="modal fade" id="videoModal1" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="videoModal2" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="videoModal3" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Review Form Section -->
+    <section class="review-form-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="review-form animate-on-scroll">
+                        <h3 class="text-center mb-4" style="color: var(--dark);">Share Your Experience</h3>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select" required>
+                                    <option value="">Select Service Received</option>
+                                    <option>Screen Replacement</option>
+                                    <option>Battery Replacement</option>
+                                    <option>Charging Port Repair</option>
+                                    <option>Water Damage Repair</option>
+                                    <option>Software Issues</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 text-center">
+                                <p class="mb-2" style="color: var(--dark);">Your Rating</p>
+                                <div class="rating-input">
+                                    <input id="star5" name="rating" type="radio" value="5">
+                                    <label for="star5" title="5 stars">★</label>
+                                    <input id="star4" name="rating" type="radio" value="4">
+                                    <label for="star4" title="4 stars">★</label>
+                                    <input id="star3" name="rating" type="radio" value="3">
+                                    <label for="star3" title="3 stars">★</label>
+                                    <input id="star2" name="rating" type="radio" value="2">
+                                    <label for="star2" title="2 stars">★</label>
+                                    <input id="star1" name="rating" type="radio" value="1">
+                                    <label for="star1" title="1 star">★</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Your Review" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit Review</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>ProFix Mobile Repair</h5>
+                    <p>Professional mobile phone repair services for all major brands. Fast, reliable and affordable solutions for your devices.</p>
+                </div>
+                
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="about.html">About Us</a>
+                        <a href="reviews.html">Reviews</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5>Our Services</h5>
+                    <div class="footer-links">
+                        <a href="#">Screen Replacement</a>
+                        <a href="#">Battery Replacement</a>
+                        <a href="#">Charging Port Repair</a>
+                        <a href="#">Water Damage Repair</a>
+                        <a href="#">Software Issues</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Main Market, Lahore</p>
+                    <p><i class="fas fa-phone-alt me-2"></i> +92 300 1234567</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@profixrepair.com</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="mt-4" style="border-color: rgba(255,255,255,0.1);">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 ProFix Mobile Repair. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> for mobile users</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const animateOnScroll = function() {
+                animateElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    const delay = element.getAttribute('data-delay') || 0;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        setTimeout(() => {
+                            element.classList.add('animated');
+                        }, delay * 5);
+                    }
+                });
+            };
+            
+            // Initial check
+            animateOnScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Review card hover effect
+            const reviewCards = document.querySelectorAll('.review-card');
+            reviewCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                });
+            });
+            
+            // Video card hover effect
+            const videoCards = document.querySelectorAll('.video-card');
+            videoCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
+            
+            // Star rating interaction
+            const stars = document.querySelectorAll('.rating-input label');
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    // Remove all star colors first
+                    stars.forEach(s => {
+                        s.style.color = '#ddd';
+                    });
+                    
+                    // Color clicked star and all previous stars
+                    this.style.color = '#ffc107';
+                    let prevSibling = this.previousElementSibling;
+                    while (prevSibling) {
+                        if (prevSibling.tagName === 'LABEL') {
+                            prevSibling.style.color = '#ffc107';
+                        }
+                        prevSibling = prevSibling.previousElementSibling;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
